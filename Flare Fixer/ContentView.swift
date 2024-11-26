@@ -7,55 +7,125 @@
 
 import SwiftUI
 import SwiftData
+import PDFKit
+import Vision
 import UniformTypeIdentifiers
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var selectedPDF: URL?
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+        VStack {
+            Button("Select PDF") {
+                selectPDF { url in
+                    self.selectedPDF = url
+                    if let pdfURL = url {
+                        processPDF(at: pdfURL)
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .padding()
+
+            if let pdfURL = selectedPDF {
+                Text("Selected File: \(pdfURL.lastPathComponent)")
+                    .padding()
+            } else {
+                Text("No File Selected")
+                    .italic()
+                    .foregroundColor(.gray)
+            }
+        }
+        .frame(width: 400, height: 200)
+    }
+
+    func selectPDF(completion: @escaping (URL?) -> Void) {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [.pdf]
+        panel.canChooseFiles = true
+        panel.allowsMultipleSelection = false
+        panel.begin { response in
+            if response == .OK {
+                completion(panel.url)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+
+    func processPDF(at url: URL) {
+        guard let pdfDocument = PDFDocument(url: url) else { return }
+        for pageIndex in 0..<pdfDocument.pageCount {
+            guard let page = pdfDocument.page(at: pageIndex) else { continue }
+            if let pageText = page.string, !pageText.isEmpty {
+                if isGarbled(text: pageText) {
+                    if let correctedText = performOCR(on: page) {
+                        recreatePDF(with: correctedText, originalPage: page)
+                    }
+                }
+            } else {
+                if let correctedText = performOCR(on: page) {
+                    recreatePDF(with: correctedText, originalPage: page)
+                }
+            }
+        }
+    }
+
+    func isGarbled(text: String) -> Bool {
+        // Implement logic to detect garbled text
+        return false
+    }
+
+    func performOCR(on page: PDFPage) -> String? {
+        // Get the page's thumbnail as an NSImage
+        let pageImage = page.thumbnail(of: page.bounds(for: .mediaBox).size, for: .mediaBox)
+        
+        // Convert NSImage to CGImage
+        guard let cgImage = pageImage.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            print("Failed to convert NSImage to CGImage")
+            return nil
         }
         
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+        // Perform OCR using Vision
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        let request = VNRecognizeTextRequest()
+        do {
+            try requestHandler.perform([request])
+            
+            // Unwrap the results
+            guard let observations = request.results else {
+                print("No text recognized")
+                return nil
+            }
+            
+            // Extract text directly from observations
+            let recognizedText = observations.compactMap { observation in
+                observation.topCandidates(1).first?.string
+            }.joined(separator: "\n")
+            
+            return recognizedText
+        } catch {
+            print("OCR failed: \(error)")
+            return nil
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+    func recreatePDF(with text: String, originalPage: PDFPage) {
+        let newPDFDocument = PDFDocument()
+        let newPage = PDFPage()
+        let textAnnotation = PDFAnnotation(bounds: originalPage.bounds(for: .mediaBox), forType: .freeText, withProperties: nil)
+        textAnnotation.contents = text
+        newPage.addAnnotation(textAnnotation)
+        newPDFDocument.insert(newPage, at: 0)
+        savePDF(newPDFDocument)
+    }
+
+    func savePDF(_ pdfDocument: PDFDocument) {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [.pdf]
+        savePanel.begin { response in
+            if response == .OK, let url = savePanel.url {
+                pdfDocument.write(to: url)
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
