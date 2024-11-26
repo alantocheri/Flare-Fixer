@@ -153,7 +153,6 @@ struct ContentView: View {
                 return
             }
             
-            // Create a new PDF context
             var pageBounds = originalPage.bounds(for: .mediaBox)
             guard let context = CGContext(url as CFURL, mediaBox: &pageBounds, nil) else {
                 print("Failed to create PDF context")
@@ -161,33 +160,29 @@ struct ContentView: View {
             }
             print("PDF context created")
             
-            // Start a new PDF page
             context.beginPDFPage(nil)
             print("Started new PDF page")
             
-            // Test Placeholder: Draw a rectangle to confirm the context is working
+            // Placeholder rectangle (for debugging position)
             context.setFillColor(NSColor.yellow.cgColor)
             context.fill(CGRect(x: 50, y: 50, width: 200, height: 50))
             print("Placeholder rectangle drawn")
             
-            // OPTIONAL: Draw the original page as a background
-            if let cgPage = originalPage.pageRef {
-                print("Drawing original page content")
-                //context.drawPDFPage(cgPage)
-            }
-            
-            // Draw OCR text onto the page
+            // Draw OCR text
+            print("OCR text being drawn: \(text)")
             context.setTextDrawingMode(.fill)
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: NSFont.systemFont(ofSize: 12),
                 .foregroundColor: NSColor.black
             ]
             let attributedText = NSAttributedString(string: text, attributes: attributes)
-            let textFrame = CGRect(x: 50, y: 100, width: pageBounds.width - 100, height: pageBounds.height - 150)
-            attributedText.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
-            print("OCR text drawn: \(text)")
             
-            // End the page and close the PDF context
+            // Adjust frame for text drawing
+            let textFrame = CGRect(x: 100, y: 100, width: pageBounds.width - 200, height: pageBounds.height - 200)
+            print("Text frame: \(textFrame)")
+            attributedText.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
+            print("OCR text drawing completed")
+            
             context.endPDFPage()
             context.closePDF()
             print("Recreated PDF saved to \(url.path)")
