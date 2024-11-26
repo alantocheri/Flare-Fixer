@@ -58,7 +58,7 @@ struct ContentView: View {
             print("Failed to open PDF")
             return
         }
-        
+
         for pageIndex in 0..<pdfDocument.pageCount {
             guard let page = pdfDocument.page(at: pageIndex) else { continue }
             if let pageText = page.string, !pageText.isEmpty {
@@ -68,6 +68,8 @@ struct ContentView: View {
                     if let correctedText = performOCR(on: page) {
                         recreatePDF(with: correctedText, originalPage: page)
                     }
+                } else {
+                    print("Text on page \(pageIndex) is not garbled.")
                 }
             } else {
                 print("No text found on page \(pageIndex), performing OCR...")
@@ -80,16 +82,31 @@ struct ContentView: View {
     }
 
     func isGarbled(text: String) -> Bool {
-        // Check for low readability
+        print("Checking if text is garbled...")
+        
+        // Define ASCII character set
         let asciiCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?")
+        
+        // Count ASCII-readable characters
         let filteredText = text.filter { char in
             String(char).rangeOfCharacter(from: asciiCharacterSet) != nil
         }
         let readabilityRatio = Double(filteredText.count) / Double(text.count)
-        return readabilityRatio < 0.5 // Less than 50% readable
+        print("Readability ratio: \(readabilityRatio)")
+        
+        // Additional checks for garbled text
+        let nonAlphanumericRatio = 1.0 - readabilityRatio
+        let hasExcessiveSymbols = nonAlphanumericRatio > 0.1 // More than 10% symbols
+        let hasFewMeaningfulWords = text.split(separator: " ").count < 5 // Fewer than 5 words
+
+        let isGarbled = readabilityRatio < 0.9 || hasExcessiveSymbols || hasFewMeaningfulWords
+        print("Text is garbled: \(isGarbled)")
+        return isGarbled
     }
 
     func performOCR(on page: PDFPage) -> String? {
+        print("Performing OCR on page...")
+        
         // Get the page's thumbnail as an NSImage
         let pageImage = page.thumbnail(of: page.bounds(for: .mediaBox).size, for: .mediaBox)
         
@@ -116,6 +133,7 @@ struct ContentView: View {
                 observation.topCandidates(1).first?.string
             }.joined(separator: "\n")
             
+            print("OCR result: \(recognizedText)")
             return recognizedText
         } catch {
             print("OCR failed: \(error)")
