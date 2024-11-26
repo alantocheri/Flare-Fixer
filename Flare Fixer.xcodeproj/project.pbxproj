@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		E7943AA12CF55E85005CCCE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7943A852CF55E83005CCCE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7943A8C2CF55E83005CCCE3;
+			remoteInfo = "Flare Fixer";
+		};
+		E7943AAB2CF55E85005CCCE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7943A852CF55E83005CCCE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7943A8C2CF55E83005CCCE3;
+			remoteInfo = "Flare Fixer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E7943A8D2CF55E83005CCCE3 /* Flare Fixer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flare Fixer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7943AA02CF55E85005CCCE3 /* Flare FixerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Flare FixerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7943AAA2CF55E85005CCCE3 /* Flare FixerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Flare FixerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E7943A8F2CF55E83005CCCE3 /* Flare Fixer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Flare Fixer";
+			sourceTree = "<group>";
+		};
+		E7943AA32CF55E85005CCCE3 /* Flare FixerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Flare FixerTests";
+			sourceTree = "<group>";
+		};
+		E7943AAD2CF55E85005CCCE3 /* Flare FixerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Flare FixerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7943A8A2CF55E83005CCCE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943A9D2CF55E85005CCCE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943AA72CF55E85005CCCE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E7943A842CF55E83005CCCE3 = {
+			isa = PBXGroup;
+			children = (
+				E7943A8F2CF55E83005CCCE3 /* Flare Fixer */,
+				E7943AA32CF55E85005CCCE3 /* Flare FixerTests */,
+				E7943AAD2CF55E85005CCCE3 /* Flare FixerUITests */,
+				E7943A8E2CF55E83005CCCE3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E7943A8E2CF55E83005CCCE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7943A8D2CF55E83005CCCE3 /* Flare Fixer.app */,
+				E7943AA02CF55E85005CCCE3 /* Flare FixerTests.xctest */,
+				E7943AAA2CF55E85005CCCE3 /* Flare FixerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7943A8C2CF55E83005CCCE3 /* Flare Fixer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7943AB42CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare Fixer" */;
+			buildPhases = (
+				E7943A892CF55E83005CCCE3 /* Sources */,
+				E7943A8A2CF55E83005CCCE3 /* Frameworks */,
+				E7943A8B2CF55E83005CCCE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E7943A8F2CF55E83005CCCE3 /* Flare Fixer */,
+			);
+			name = "Flare Fixer";
+			packageProductDependencies = (
+			);
+			productName = "Flare Fixer";
+			productReference = E7943A8D2CF55E83005CCCE3 /* Flare Fixer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E7943A9F2CF55E85005CCCE3 /* Flare FixerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7943AB72CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare FixerTests" */;
+			buildPhases = (
+				E7943A9C2CF55E85005CCCE3 /* Sources */,
+				E7943A9D2CF55E85005CCCE3 /* Frameworks */,
+				E7943A9E2CF55E85005CCCE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7943AA22CF55E85005CCCE3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E7943AA32CF55E85005CCCE3 /* Flare FixerTests */,
+			);
+			name = "Flare FixerTests";
+			packageProductDependencies = (
+			);
+			productName = "Flare FixerTests";
+			productReference = E7943AA02CF55E85005CCCE3 /* Flare FixerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E7943AA92CF55E85005CCCE3 /* Flare FixerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7943ABA2CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare FixerUITests" */;
+			buildPhases = (
+				E7943AA62CF55E85005CCCE3 /* Sources */,
+				E7943AA72CF55E85005CCCE3 /* Frameworks */,
+				E7943AA82CF55E85005CCCE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7943AAC2CF55E85005CCCE3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E7943AAD2CF55E85005CCCE3 /* Flare FixerUITests */,
+			);
+			name = "Flare FixerUITests";
+			packageProductDependencies = (
+			);
+			productName = "Flare FixerUITests";
+			productReference = E7943AAA2CF55E85005CCCE3 /* Flare FixerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7943A852CF55E83005CCCE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					E7943A8C2CF55E83005CCCE3 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					E7943A9F2CF55E85005CCCE3 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E7943A8C2CF55E83005CCCE3;
+					};
+					E7943AA92CF55E85005CCCE3 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E7943A8C2CF55E83005CCCE3;
+					};
+				};
+			};
+			buildConfigurationList = E7943A882CF55E83005CCCE3 /* Build configuration list for PBXProject "Flare Fixer" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E7943A842CF55E83005CCCE3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E7943A8E2CF55E83005CCCE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7943A8C2CF55E83005CCCE3 /* Flare Fixer */,
+				E7943A9F2CF55E85005CCCE3 /* Flare FixerTests */,
+				E7943AA92CF55E85005CCCE3 /* Flare FixerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7943A8B2CF55E83005CCCE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943A9E2CF55E85005CCCE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943AA82CF55E85005CCCE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7943A892CF55E83005CCCE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943A9C2CF55E85005CCCE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7943AA62CF55E85005CCCE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7943AA22CF55E85005CCCE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7943A8C2CF55E83005CCCE3 /* Flare Fixer */;
+			targetProxy = E7943AA12CF55E85005CCCE3 /* PBXContainerItemProxy */;
+		};
+		E7943AAC2CF55E85005CCCE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7943A8C2CF55E83005CCCE3 /* Flare Fixer */;
+			targetProxy = E7943AAB2CF55E85005CCCE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E7943AB22CF55E85005CCCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E7943AB32CF55E85005CCCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E7943AB52CF55E85005CCCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Flare Fixer/Flare_Fixer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Flare Fixer/Preview Content\"";
+				DEVELOPMENT_TEAM = 67862WR44J;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-Fixer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E7943AB62CF55E85005CCCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Flare Fixer/Flare_Fixer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Flare Fixer/Preview Content\"";
+				DEVELOPMENT_TEAM = 67862WR44J;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-Fixer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E7943AB82CF55E85005CCCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67862WR44J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-FixerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flare Fixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flare Fixer";
+			};
+			name = Debug;
+		};
+		E7943AB92CF55E85005CCCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67862WR44J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-FixerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flare Fixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flare Fixer";
+			};
+			name = Release;
+		};
+		E7943ABB2CF55E85005CCCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67862WR44J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-FixerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Flare Fixer";
+			};
+			name = Debug;
+		};
+		E7943ABC2CF55E85005CCCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67862WR44J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tocheri.Flare-FixerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Flare Fixer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7943A882CF55E83005CCCE3 /* Build configuration list for PBXProject "Flare Fixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7943AB22CF55E85005CCCE3 /* Debug */,
+				E7943AB32CF55E85005CCCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7943AB42CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare Fixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7943AB52CF55E85005CCCE3 /* Debug */,
+				E7943AB62CF55E85005CCCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7943AB72CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare FixerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7943AB82CF55E85005CCCE3 /* Debug */,
+				E7943AB92CF55E85005CCCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7943ABA2CF55E85005CCCE3 /* Build configuration list for PBXNativeTarget "Flare FixerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7943ABB2CF55E85005CCCE3 /* Debug */,
+				E7943ABC2CF55E85005CCCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7943A852CF55E83005CCCE3 /* Project object */;
+}
