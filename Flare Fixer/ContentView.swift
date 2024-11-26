@@ -10,6 +10,7 @@ import SwiftData
 import PDFKit
 import Vision
 import UniformTypeIdentifiers
+import Quartz
 
 struct ContentView: View {
     @State private var selectedPDF: URL?
@@ -143,16 +144,56 @@ struct ContentView: View {
 
     func recreatePDF(with text: String, originalPage: PDFPage) {
         print("Recreating PDF page with corrected text...")
-        let newPDFDocument = PDFDocument()
-        let newPage = PDFPage()
-        let textAnnotation = PDFAnnotation(bounds: originalPage.bounds(for: .mediaBox), forType: .freeText, withProperties: nil)
-        textAnnotation.contents = text
-        newPage.addAnnotation(textAnnotation)
-        newPDFDocument.insert(newPage, at: 0)
         
-        savePDF(newPDFDocument)
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [.pdf]
+        savePanel.begin { response in
+            guard response == .OK, let url = savePanel.url else {
+                print("Save canceled or failed")
+                return
+            }
+            
+            // Create a new PDF context
+            var pageBounds = originalPage.bounds(for: .mediaBox)
+            guard let context = CGContext(url as CFURL, mediaBox: &pageBounds, nil) else {
+                print("Failed to create PDF context")
+                return
+            }
+            print("PDF context created")
+            
+            // Start a new PDF page
+            context.beginPDFPage(nil)
+            print("Started new PDF page")
+            
+            // Test Placeholder: Draw a rectangle to confirm the context is working
+            context.setFillColor(NSColor.yellow.cgColor)
+            context.fill(CGRect(x: 50, y: 50, width: 200, height: 50))
+            print("Placeholder rectangle drawn")
+            
+            // OPTIONAL: Draw the original page as a background
+            if let cgPage = originalPage.pageRef {
+                print("Drawing original page content")
+                //context.drawPDFPage(cgPage)
+            }
+            
+            // Draw OCR text onto the page
+            context.setTextDrawingMode(.fill)
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: NSFont.systemFont(ofSize: 12),
+                .foregroundColor: NSColor.black
+            ]
+            let attributedText = NSAttributedString(string: text, attributes: attributes)
+            let textFrame = CGRect(x: 50, y: 100, width: pageBounds.width - 100, height: pageBounds.height - 150)
+            attributedText.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
+            print("OCR text drawn: \(text)")
+            
+            // End the page and close the PDF context
+            context.endPDFPage()
+            context.closePDF()
+            print("Recreated PDF saved to \(url.path)")
+        }
     }
-
+    
     func savePDF(_ pdfDocument: PDFDocument) {
         let savePanel = NSSavePanel()
         savePanel.allowedContentTypes = [.pdf]
@@ -160,6 +201,15 @@ struct ContentView: View {
             if response == .OK, let url = savePanel.url {
                 pdfDocument.write(to: url)
                 print("Saved corrected PDF to \(url.path)")
+                
+                // Confirmation message
+                let alert = NSAlert()
+                alert.messageText = "PDF Saved Successfully"
+                alert.informativeText = "Your corrected PDF has been saved to: \(url.path)"
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            } else {
+                print("Save canceled or failed")
             }
         }
     }
