@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UniformTypeIdentifiers
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -35,6 +36,7 @@ struct ContentView: View {
         } detail: {
             Text("Select an item")
         }
+        
     }
 
     private func addItem() {
