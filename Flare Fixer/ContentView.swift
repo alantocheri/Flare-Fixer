@@ -11,6 +11,7 @@ import PDFKit
 import Vision
 import UniformTypeIdentifiers
 import Quartz
+import CoreText
 
 struct ContentView: View {
     @State private var selectedPDF: URL?
@@ -142,6 +143,7 @@ struct ContentView: View {
         }
     }
 
+
     func recreatePDF(with text: String, originalPage: PDFPage) {
         print("Recreating PDF page with corrected text...")
         
@@ -168,19 +170,19 @@ struct ContentView: View {
             context.fill(CGRect(x: 50, y: 50, width: 200, height: 50))
             print("Placeholder rectangle drawn")
             
-            // Draw OCR text
+            // Use Core Text to draw the OCR text
             print("OCR text being drawn: \(text)")
-            context.setTextDrawingMode(.fill)
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: NSFont.systemFont(ofSize: 12),
-                .foregroundColor: NSColor.black
+            let font = CTFontCreateWithName("Helvetica" as CFString, 12, nil)
+            let attributes: [CFString: Any] = [
+                kCTFontAttributeName: font,
+                kCTForegroundColorAttributeName: NSColor.black.cgColor
             ]
-            let attributedText = NSAttributedString(string: text, attributes: attributes)
+            let attributedString = CFAttributedStringCreate(nil, text as CFString, attributes as CFDictionary)
+            let framesetter = CTFramesetterCreateWithAttributedString(attributedString!)
+            let path = CGPath(rect: CGRect(x: 100, y: 100, width: pageBounds.width - 200, height: pageBounds.height - 200), transform: nil)
+            let frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, text.count), path, nil)
+            CTFrameDraw(frame, context)
             
-            // Adjust frame for text drawing
-            let textFrame = CGRect(x: 100, y: 100, width: pageBounds.width - 200, height: pageBounds.height - 200)
-            print("Text frame: \(textFrame)")
-            attributedText.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
             print("OCR text drawing completed")
             
             context.endPDFPage()
