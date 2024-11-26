@@ -53,26 +53,40 @@ struct ContentView: View {
     }
 
     func processPDF(at url: URL) {
-        guard let pdfDocument = PDFDocument(url: url) else { return }
+        print("Processing PDF at URL: \(url.path)")
+        guard let pdfDocument = PDFDocument(url: url) else {
+            print("Failed to open PDF")
+            return
+        }
+        
         for pageIndex in 0..<pdfDocument.pageCount {
             guard let page = pdfDocument.page(at: pageIndex) else { continue }
             if let pageText = page.string, !pageText.isEmpty {
+                print("Text extracted from page \(pageIndex): \(pageText)")
                 if isGarbled(text: pageText) {
+                    print("Garbled text detected on page \(pageIndex), performing OCR...")
                     if let correctedText = performOCR(on: page) {
                         recreatePDF(with: correctedText, originalPage: page)
                     }
                 }
             } else {
+                print("No text found on page \(pageIndex), performing OCR...")
                 if let correctedText = performOCR(on: page) {
                     recreatePDF(with: correctedText, originalPage: page)
                 }
             }
         }
+        print("PDF processing complete!")
     }
 
     func isGarbled(text: String) -> Bool {
-        // Implement logic to detect garbled text
-        return false
+        // Check for low readability
+        let asciiCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?")
+        let filteredText = text.filter { char in
+            String(char).rangeOfCharacter(from: asciiCharacterSet) != nil
+        }
+        let readabilityRatio = Double(filteredText.count) / Double(text.count)
+        return readabilityRatio < 0.5 // Less than 50% readable
     }
 
     func performOCR(on page: PDFPage) -> String? {
@@ -110,12 +124,14 @@ struct ContentView: View {
     }
 
     func recreatePDF(with text: String, originalPage: PDFPage) {
+        print("Recreating PDF page with corrected text...")
         let newPDFDocument = PDFDocument()
         let newPage = PDFPage()
         let textAnnotation = PDFAnnotation(bounds: originalPage.bounds(for: .mediaBox), forType: .freeText, withProperties: nil)
         textAnnotation.contents = text
         newPage.addAnnotation(textAnnotation)
         newPDFDocument.insert(newPage, at: 0)
+        
         savePDF(newPDFDocument)
     }
 
@@ -125,6 +141,7 @@ struct ContentView: View {
         savePanel.begin { response in
             if response == .OK, let url = savePanel.url {
                 pdfDocument.write(to: url)
+                print("Saved corrected PDF to \(url.path)")
             }
         }
     }
