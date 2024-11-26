@@ -142,10 +142,9 @@ struct ContentView: View {
             return nil
         }
     }
-
-
+    
     func recreatePDF(with text: String, originalPage: PDFPage) {
-        print("Recreating PDF page with corrected text...")
+        print("Recreating PDF page with corrected layout...")
         
         let savePanel = NSSavePanel()
         savePanel.allowedContentTypes = [.pdf]
@@ -165,31 +164,35 @@ struct ContentView: View {
             context.beginPDFPage(nil)
             print("Started new PDF page")
             
-            // Placeholder rectangle (for debugging position)
-            context.setFillColor(NSColor.yellow.cgColor)
-            context.fill(CGRect(x: 50, y: 50, width: 200, height: 50))
-            print("Placeholder rectangle drawn")
+            // Step 1: Draw the original page content (optional)
+            if let cgPage = originalPage.pageRef {
+                print("Drawing original content...")
+                context.saveGState()
+                context.drawPDFPage(cgPage)
+                context.restoreGState()
+            }
             
-            // Use Core Text to draw the OCR text
-            print("OCR text being drawn: \(text)")
-            let font = CTFontCreateWithName("Helvetica" as CFString, 12, nil)
+            // Step 2: Overlay OCR text
+            print("Drawing OCR text...")
+            let textFrame = CGRect(x: 50, y: 50, width: pageBounds.width - 100, height: pageBounds.height - 100)
+            let font = CTFontCreateWithName("Helvetica" as CFString, 10, nil)
             let attributes: [CFString: Any] = [
                 kCTFontAttributeName: font,
                 kCTForegroundColorAttributeName: NSColor.black.cgColor
             ]
             let attributedString = CFAttributedStringCreate(nil, text as CFString, attributes as CFDictionary)
             let framesetter = CTFramesetterCreateWithAttributedString(attributedString!)
-            let path = CGPath(rect: CGRect(x: 100, y: 100, width: pageBounds.width - 200, height: pageBounds.height - 200), transform: nil)
+            let path = CGPath(rect: textFrame, transform: nil)
             let frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, text.count), path, nil)
             CTFrameDraw(frame, context)
-            
-            print("OCR text drawing completed")
+            print("OCR text drawn.")
             
             context.endPDFPage()
             context.closePDF()
             print("Recreated PDF saved to \(url.path)")
         }
     }
+   
     
     func savePDF(_ pdfDocument: PDFDocument) {
         let savePanel = NSSavePanel()
